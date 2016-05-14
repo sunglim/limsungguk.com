@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/1999/xhtml">
 <html>
 <head>
+<meta charset="utf-8" />
 </head>
 <body>
 <h1>구글 인터뷰 후기</h1>
@@ -18,6 +19,60 @@
 구글에서 보는 인터뷰는 100% 기술적인 인터뷰이다. 전화인터뷰 역시 알고리즘문제를 물어봤는데
 문제는 아래와 같다.
 <p>
+
+<h3> 주어진 binary tree를 inorder traversal을 했을때 방문한 노드들을 순서대로 리턴하는 함수를 작성하시오</h3>
+<pre>
+예를 들면  아래와 같은 형태의 트리는 '213'를 리턴해야한다.
+    1
+   / \
+  2   3
+</pre>
+
+<p>
+답은 간단하다. 기초적인 tree traversal만 알면 풀수있는 문제이다. recursive하게 풀수도 있지만
+Space complexity가 O(n)이상이 필요하고 함수하나로 딱 떨어지지 않거나 static 변수를 써야하기에
+inorder traversal을 recursion 방법을 쓰지않고 iterative하게 코드를 작성하면된다.
+
+recursive는 iterative로 변경될수 있다는 것을 알고, 어떤 순서대로 동작하는지를 제대로 알고 있어야할것이다.
+</p>
+
+<p>
+<pre>
+std::string InorderTraversal(const Node* head) {
+  if (!head)
+     return "";
+  std::string out_string;
+  const Node* node = head;
+  std::stack<const Node*> stack;
+  while (node || !stack.empty()) {
+    if (node) {
+      stack.push(node);
+      node = node->left;
+    } else {
+      node = stack.top();
+      stack.pop();
+      out_string += node->value;
+      node = node->right;
+    }
+  }
+  return out_string;
+}
+</pre>
+</p>
+
+모든 노드를 한번씩 방문하므로 TimeComplexity = O(n), Stack에 모든 노드가 들어가 있는 경우를 가정하면
+SpaceComplexity = O(n).
+
+<pre>
+이렇게 코드를 작성하니 추가적인 질문을 하였다.
+여러개의 tree의 inorder traversal 순서를 비교할려면 어떻게 해야하는가?
+간단히 위 함수를 이용할수 있지만 그럴경우 tree1, tree2를 비교시 Max(tree1의 노드숫자, tree2의 노드숫자)만큼 걸리므로 효율적이지 못하다
+노드를 하나씩 방문할떄마다 비교하는게 좋지않겠냐고 하니 면접관께서 그러면 iterator를 쓰는게 어떻냐고 하였다.(면접시 막히는 부분이 있으면 면접관이 힌트를 준다)
+
+<h3>Iterator로 inorder traversal을 구현해보면</h3>
+
+
+</pre>
 
 </body>
 </html>
