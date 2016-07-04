@@ -9,7 +9,7 @@
 Facebook 혹은 Apple의 포토앱에서는 여러분 친구들의 사진을 인식하는데 이또한 머신러닝입니다. 이메일을 읽거나 스팸필터를 사용하는것또한 머신러닝입니다.
 컴퓨터가 명시적으로 프로그램되지않아도 알수있도록 하는 분야가 있습니다. 한 예를 보면 저는 로봇이 집을 청소하는 프로젝트를 연구하고있습니다
 어떻게 작동을 할까요? 아마도 로봇이 당신이 청소하는것을 보고 그것을 배우는 것입니다. 당신이 어떤 물건을 집는지 보고 어디다가 놓는지를 보고 그와 비슷한것을 당신이 없을때 할것입니다. 
-저에게는 AI나 aritificial intelligence 문제에 매우 흥미가 있습니다.
+이런것들이 저에게 흥미를 일으키는 이유는 바로 이것들이 AI, 혹은 인공지능 문제이기때문입니다
 많은 과학자들이 이런것을 머신러닝을 통해 하는것이 최선이라고 생각하는데 이것을 neural networks라고 부릅니다.
 즉, 어떻게 사람의 두뇌가 작동하는것인지를 따라하는것이지요. 저는 이런것들을 당신에게 이번 클레스에서 다룰려고합니다
 그리고 실제구현하는것도요
@@ -17,8 +17,8 @@ Facebook 혹은 Apple의 포토앱에서는 여러분 친구들의 사진을 인
 <h2>Introduction</h2>
 <h3>Supervised Learning</h3>
 이 비디오에서 가장 일반적인 머신러닝 문제에 대해 다뤄볼것입니다. 그것은 Supervised Learning(지도학습)입니다.
-지도학습을 더 일반적으로 정의하자면 예제로 설명하는게 최선입니다. 그 후에 formal definition을 알아보죠
-집 가격을 에측하고자할대 데이터를 먼저 모아야합니다. 데이터가 이렇다고 해보죠 이 데이터에서 750 square feet을 소유하는
+지도학습을 더 일반적으로 정의하자면 예제로 설명하는게 최선입니다. 그 후에 formal definition을 알아보죠.
+집 가격을 에측하고자할대 데이터를 먼저 모아야합니다. 데이터가 이렇다고 해보죠. x축은 집 크기를 square feet으로 나타내고, y축은 집값을 1000$ 단위로 나타냅니다 이 데이터에서 750 square feet을 소유하는
 친구가 있다고 하고 집을 팔려고한다고 합시다. 그러면 얼마나 돈을 받을수 있을까요? 알고리즘을 배우는것이 어떻게 도움을 줄까요?
 아마도 이런 일직선을 데이터상에 그리는것일겁니다. 혹은 일직선을 데이터상에 맞춰가는것이지요.
 아마도 집을 $150,000에 팔수 잇을것같네요. 이것이 러닝 알고리즘의 전부는 아닙니다. 아마 더 좋은 방법이 있겠죠
@@ -133,15 +133,23 @@ size of hourse  ->   h    ->  Estimated price
     x             (hypothesis)     (estimated value)
 </pre>
 
+#comment: We call this kind of algorithm as 'Linear regression', 'Linear regression with one variable'.
+
+<pre>
 And we will write this as h
 <u>theta(x) equals theta<u>0</u></u> plus theta<u>1 of x.</u>
 Cost function에 대해 알아볼것입니다. 최적화된 직선을 데이터위에 그리는것이 목적입니다
+즉, 어떤 세타0, 세타1을 고르는가를 알아보는 것이다.
+
+thus, select theta0, theta1 close to our training set.
+
 Linear regression에서 이런 형태의 training set이 있다고 치고
 갯수 m = 47, h세타(x) = 세타0 + 세타1x.
 우리는 여기서 세타0, 세타1을 어떤 값으로 선택할것인가에 대해 알아볼것입니다.
 
 세타0, 세타1을 어떻게 선택하냐에 따라 다른 형태의 hypothesis functions를 얻게됩니다.
 예를들어, 세타0 = 1.5, 세타1 = 0 라면 이런형태, 
+</pre>
 <pre>
 |
 |---------------
