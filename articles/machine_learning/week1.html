@@ -22,59 +22,69 @@ Facebook 혹은 Apple의 포토앱에서는 여러분 친구들의 사진을 인
 친구가 있다고 하고 집을 팔려고한다고 합시다. 그러면 얼마나 돈을 받을수 있을까요? 알고리즘을 배우는것이 어떻게 도움을 줄까요?
 아마도 이런 일직선을 데이터상에 그리는것일겁니다. 혹은 일직선을 데이터상에 맞춰가는것이지요.
 아마도 집을 $150,000에 팔수 잇을것같네요. 이것이 러닝 알고리즘의 전부는 아닙니다. 아마 더 좋은 방법이 있겠죠
-ㅇ례를 들어 일직선을 데이터상에 보내는것대신 quadratic function을 쓰거나 second-order polynomial을 보내는것이 더 낫다는것입니다.
+예를 들어 일직선을 데이터상에 보내는것대신 quadratic function을 쓰거나 second-order polynomial을 보내는것이 더 낫다는것입니다.
 그리고 그것을 이용하여 예측을 하면 집을 $200,000에 가깝게 팔수있다는것을 알수있습니다. 
 우리가 말하고자하는것은 어떻게 선택하고 어떻게 결정하는가입니다. 일직선을 그리는것일수도 있고 혹은 quadratic function을 데이터에 그리는것이지요 그리고 fair picking 방법은 없습니다.
-하지만 이런것들이 알고리즘을 배우는것에 좋은 예제는 될수있죠. 바로 이것이 인지학습알고리즘입니다. 
-인지학습이란, we gave the algorithm a data set in which the 'right answer' were given. 즉, 우리는 어떤것이 옳은 가격이고 또 어떤것이
-실제 가격인지를 봤었습니다. 
-그리고 알고리즘을 통해 더 정확한 알고리즘에 대해 알아볼것입니다
-전문적으로 말하자면 이런것을 'regression problem'이라고 합니다. 그리고 'regiression problem'을 통해 연속적인 결과값을 예상할수 있습니다.
-즉, 집값을 구햇듯이요. 기술적으로 가격을 반올림해서 예측할수있고 가격은 discrete값일것ㅂ니다. 하지만 실제 집값은
-real number입니다. 즉 , scalar value입니다. 
+하지만 이런것들이 알고리즘을 배우는것에 좋은 예제는 될수있죠. 바로 이것이 Supervised Learning algorithm입니다. 
+Supervised Learning이라는 용어는, we gave the algorithm a data set in which the 'right answer' were given.(올바른 답변이 있는 데이터셋을 알고리즘에게 주는것)
+즉, 예제를 통해서 집값에 대한 데이터셋을 주었고,( 올바른 가격이 얼마인지 무엇이 실제 가격인지), 새 집에 대한 올바른 가격을 내는 알고리즘을 toss하는것 입니다. 조금 더 전문적으로 말하면, 'regression problem' 으로 불립니다.
+regression problem 을 통해 연속적인값(continuous value) 을 예측할수 있다. 
+즉, 집값을 구햇듯이요. 기술적으로 가격은 반올림되어 가장가까운 cent가 될수 있고, 그래서 실제로는 discrete값일것입니다.
+하지만 우리는 집값을 real number, scalar value, continuous value number 그리고 term regression 으로 생각을 한다. 연속적인 값들을 예측한.
 
-다른 supervised learning 예를 들어보면 몇몇의 친구들과 내가 연구했던것인데 암을 예상하는것이지요
-의료기록을 봅시다. 그리고 유방암이 악성인지 양성인지를 예상해봅시다. 누군가가 유방암을 발견하고,
-가슴에 덩어리를 발견하고 악성 종양은 유해한것이고 유험한것입니다. 양성은 무해한것입니다. 그래서 사람들은 이것을
-매우 중요하게 생각하죠. 
+다른 supervised learning 예를 들어보면, 몇몇의 친구들과 내가 연구했던것인데 암을 예상하는것이지요
+의료기록을 보고,  그리고 유방암이 악성인지 양성인지를 예상해봅시다.
+누군가가 종양이나 덩어리를 가슴에서 발견합니다. 발견하고 악성 종양은 유해한것이고 유험한것입니다. 양성은 무해한것입니다. 그래서 사람들은 이것을 매우 중요하게 생각하죠. 
 자료를 봅시다. 수평축은 종양의 사이즈고 수직축은 one / zero, 즉 yes no 로 할것입니다.이를 악성인지 양성인지로 나타낼거구요
-이거 이거는 악성입니다. 
+이거 이거는 악성입니다....
 5개의 악성과 5개의 양성 예제를 가지고 있습니다. 
 우리친구가 유방종양을 갖고 있고 그 종양의사이즈가 이쯤에 위치한다고 칩시다
-여기서 머신러닝 문제는 그 종양이 악성인가 양성인가의 확률을 예상하는것입니다. 
+여기서 머신러닝 문제는 그 종양이 악성인가 양성인가의 개연성(probability)을 예상하는것입니다. 
 전문적으로 말하면 classfication problem이라고 말할수있습니다 (분류하는것이구나)
 classification 의 뜻은 값을 discrete로 예상할수 있는가 하는것입니다 : Zero or one. 악성 or 양성
 이 분류는 두게 이상일수도 있습니다.
-예를들어 3가지라고하면 zzero, one, two 혹은 three일수 있습니다. zero는 no cancer, one은 type one cancer 처럼
-3가지의 암종류를 나타낼수 있죠. 이또한 classification problem이라혹 할수있습니다. 왜냐하면 이 discrete value set이 no cancer, cancer type one, type two type 3로
+예를들어 3가지라고하면 zero, one, two 혹은 three일수 있습니다. zero는 no cancer, one은 type one cancer 처럼 3가지의 암종류를 나타낼수 있죠.
+이 또한 classification problem이라혹 할수있습니다. 왜냐하면 이 discrete value set이 no cancer, cancer type one, type two type 3로
 매칭이 되기 있기때문이죠. 이 classification problem에서 이 자료를 나타내는 다른 방법이 있습니다. 
-약간 다른 심볼을 이용하여 이 자료를 나타낼것입니다. 종양의 사이즈가 악성인가 양성인가를 타나내는 성질이 된다면,
-이 데이터를 이렇게 그릴수 있습니다. 다른 심볼을 이용하여 악성/ 양성을 나타낼것입니다.
+약간 다른 심볼을 이용하여 이 자료를 나타낼것입니다. 
+종양의 사이즈가 악성인가 양성인가를 나타내는 성질이 된다면, 이 데이터를 이렇게 그릴수 있습니다. 다른 심볼을 이용하여 악성/ 양성을 나타낼것입니다.
 crosses로 그리는 대신에 O를 악성으로그릴것입니다. 이렇게요. 그리고 X는 양성을 유지할것입니다.
-자료들을 위에 그렸고 그것들을 매핑하여 아래에 나타냈습니다. 다른 심볼들을 이용해보죠 circle과 crosses들을 악성과 
-양성을 타나내는것으로요
-지금 이 예제에서는 하나의 feature와 하나의 attribute를 이용하였습니다. 종양사이즈를 악성인지 양성인지 예측하기위해 사용하였고,
-머신러닝문제에서 하나이상의 feature와 attribute를 나타내는것.
+자료들을 위에 그렸고 그것들을 매핑하여 아래에 나타냈습니다. 다른 심볼들을 이용해보죠 circle과 crosses들을 악성과 양성을 타나내는것으로요
+
+지금 이 예제에서는 하나의 feature와 하나의 attribute를 이용하였습니다. 즉, 종양사이즈를 악성인지 양성인지 예측하기위해 사용하였습니다.
+
+다른 머신러닝문제에서 하나이상의 feature와 attribute를 나타내는 경우가 있다.
 여기 예제에서 종양사이즈만을 아는대신에 우리는 부모의 나이와 종양사이즈를 안다고 해보죠. 이런경우 여러분의 데이터셋은
 이렇게 보일것입니다. 나이가 있는 부모집합과 종양사이즈 그리고 이렇게 보일것입니다. 다른 부모셋들은 이렇게 보이구요
 악성으로 나타낼것입니다. cross로. 
+
 친구중한명이 종양을 갖고 있고. 종양크기와 나이는 이쪽에 매칭되고 매칭되는 자료는 여기에. 
-직선은 두 classes of tumor를 분류하는것처럼 보일것입니다. 그래서 양성에 더 가깝다는것을 ㅇ예측할수 있습니다.
-이 예제에서는 두 features를 봤습니다. 부모의 나이와 종양의 사이즈를. 머신러닝문제에서는
-우리는 여러 feature를 갖게되는경우가 종종있습니다. 
+Learning algorithm은 data 사이에 악성과 양성을 분리하는 직선을 그리는것입니다. 그래서 learning algorithm은  classes of tumor를 분류하는것처럼 직선을 그리는것입니다. 그래서 양성에 더 가깝다는것을 예측할수 있습니다.
+<img src='1.jpg' alt=''>
+이 예제에서는 두 features를 봤습니다. 부모의 나이와 종양의 사이즈를. 머신러닝문제에서는 우리는 여러 더 많은 features를 갖게되는경우가 종종있습니다. 그리고 제 친구중하나가 그쪽에 일한다.
+그들은 clump thickness, the clump thickness of breast tumor를 이용합니다. Uniformity of cell shape of tumor와 같은 특징들 또한 이용합니다.
+
 이 클레스에서는 이것들을 어떻게 다루는가를 보게될것입니다. 무한의 feature들을 다룰수도 있습니다.
 이 슬라이드에서는 5개의 features를 보여드렸습니다. 두개의 축과 3개 이상은 여기. 하지만 대신에 무한의 feature를 이용하고
-무한의 attributes 를 이용하고 . 어떻게 무한을 다루게 될것인지. 어떻게 무한의 숫자를 저장할것인지. 메모리가 run out of memory되었을때.
-이런것을 Support Vector Machine이라고 부르게될것입니다. 수학적으로 깔끔한 방법을 통해 컴퓨터가 이런것을 다루도록할것입니다.
-상상해보십시요 제가 무한의 리스트를 여기 그렸다면? 하루종일 그리고만 있을거다. 
+무한의 attributes 를 이용하고 . 어떻게 무한을 다루게 될것인지. 어떻게 무한의 숫자를 저장할것인지. 메모리가 run out of memory되었을때 어떻게 다룰것인지.
 
-Regression problem의 뜻은 연속적인 값을 예상하는것이였다. 그리고 classification problem은 discrete value를 예상하는것이였다.
+이런것을 Support Vector Machine이라는 알고리즘을 배울때 알게될것입니다. 수학적으로 깔끔한 방법을 통해 infinite number of features를 컴퓨터가 이런것을 다루도록할것입니다.
+상상해보십시요 제가 무한의 리스트를 여기 그렸다면? 하루종일 그리고만 있을거다. 이것들을 다루는 알고리즘을 come up할것이다.
+
+정리하자면 이 class에서는 'Supervised learning'에 대해 이야기할것이다. 그 아이디어는, supervised learning, 그리고 데이터셋 예제를 통해서, "Correct answer"가 무엇인지를 알게될것이다. (집값이나 악성/양성)
+또한 'regression problem'에 대해서도 이야기했었는데, Regression problem의 뜻은 연속적인 값을 예상하는것이였다. 그리고 classification problem은 discrete value를 예상하는것이였다.
 
 회사에서 두 문제를 푸는 알고리즘을 개발해야한다. 첫번째, 같은 물건들의 inventory를 갖고 있고
 3달동안 얼마나 팔것인가를 예층하는것이다.
 두번째 문제는 고객계좌들을 테스트할것이다. 계좌가 hacked 되ㅓ었는지 compromised되었는지를 결정하는.
 이것들이 classification problem, regression problem 중 어떤것일까? 
 첫번째 문제는 continuous한 값을 예상하는것이였고 두번째 문제는 0-not hacked, 1-hacked로 결정하는것이였다
+
+정리
+<h1>
+Supervised Learning
+</h1>
+Supervised learning 문제는 2가지로 분류될수 있다. "regression", "classification" 문제로. "Regression" 문제에서는 continuous한 결과를 예상하고, classification 문제에서는 discrete한 결과를 예상할수있다.
 
 <h3>Unsupervised Learning</h3>
 이 비디오에서는 두번째 머신러닝 문제인 Unsupervised problem(자율학습)에 대해 배울것입니다
