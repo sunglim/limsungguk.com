@@ -141,7 +141,8 @@ cost function에 대한 표기법을 나타낼것이다. 그리고 gradient desc
 집 값을 예측하는 예제를 이용합시다. Portland의 짒값 데이터를 이용할것입니다. 저는 다양한 가격에 팔린 많은 집들에 대한 데이터셋을 이용할것입니다.
 이 데이터에서 여러분의 친구가 집을 팔고 싶다고 가정합시다. 친구의 집은 1250squre feet이고, 당신은 이 집이 얼마에 팔릴것인가를 말해주고 싶을것입니다.
 당신이 할수 있는것중 하나는 fit the model이다. 아마 직선을 모델에 적용 하는것이다.
-<img src='2.jpg' alt='' width='50%' height='50%'>
+<img src='2.png' alt='' width='50%' height='50%'>
+
 이를 기반으로 친구에게 220,000에 팔수 있다고 말하는것이다. 이게 Supervised Learning의 예이다. 이를 supervised learning이라 할수 있는데 예제에 대한 'right answer'를 주기 때문이다. 즉, 우리는 actual house가 뭔지 정보를 받았고, 데이터셋을 통해 실제로 판매된 집값에 대한 정보를 받았다, 이는 regression problem으로 real-value output(집값)을 예측하는 용어인 regression problem이다.
 리마인드하자면, 실제 대부분의 Supervised learning 문제는 classification problem이다.  악성,양성을 구분했던, zero-one으로 구분할수있는(discrete output).
 
@@ -153,7 +154,17 @@ x는 input variable. features라고도 불린다.
 y는 output variable. or target variable (which I predict)
 (x,y)는  single training example을 나타낸다.
 x(i)는 y(i)를 줄것이다. 이를 i번째 trainig set이라고 할것이다.
+여기 i는 지수를 나타낸것이 아닙니다. 이 (x(i),y(i))의 i는 training set의 index이고
+이 테이블에서 i번째 row를 타나냅니다. 예를들면 x(1)은 첫번째 training 예제의 input value를 나타내고 따라서 2014입니다.
+x(2)는 1416입니다. 두번째 x와 y(1)은 460과 같습니다. 첫번째 training 예제에서의 y value는 (1)과 같다.
+가끔씩 질문을 날릴것이다 여러게를 선택하는 질문을 날릴것이다. 그래서 여기에 어떻게 Supervised learning이 작동하는지 나와있고.
+집값예상알고리즘에 적용할것이다.
+learning algorithm의 결과로 나오는 것들은 소문자 h로 나타내는데, hypothesis를 의미한다. hypothesis이 job은,
+사이즈값 x를 넣고 가격 y가 나오는것이다. so h is a function that maps x's to y's.
+hypothesis가 어떤 의미인지 종종 묻곤하는데 ... 잡담
+다음에 어떻게 hypothesis를 나타내는지 알아볼것이다.
 
+<h3>Cost Function</h3>
 <pre>
                   Training Set
                       ↓
