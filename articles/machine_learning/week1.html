@@ -165,6 +165,29 @@ hypothesis가 어떤 의미인지 종종 묻곤하는데 ... 잡담
 다음에 어떻게 hypothesis를 나타내는지 알아볼것이다.
 
 <h3>Cost Function</h3>
+이 비디오에서는 cost function에 대해 정의해볼것입니다. 우리가 갖고있는 데이터에서 최적화된 직선을 찾는것을 알게해줄것입니다.
+linear regression에서는 이와같은 데이터를 우리가 갖고 있고 이전에 말했다시피 m은 training example의 갯수를 나타냅니다
+여기서는 47개. 그리고 이와같은 hypothesis를 갖습니다. (linear이기때문에 1차함수처럼 보임 y=ax+b)
+<img src='3.png'>
+조금 더 전문적으로 말하자면, &#920;0, &#920;1, they stabilize what I call the parameter.
+이 비디오에서 하고자 하는것은 theta zero, theta one의 값을 구하는것이다. 다른 theta zero, theta one을 구하면 우리는 다른 hypothesis를 구하게될것이다.
+(당연하다 1차 함수 y=ax+b 꼴에서 a와 b가 다르면 그래프의 모양이 달라진다)
+<img src='4.png'>
+linear regression에서 살펴봅시다. 여기 점을 찍은것처럼 training set이 있고, 우리가 원하는건 theta zero, theta one을 구하는것이다. 그것을 통해 우리는 직선을 얻게 될것이다. 그리고 그 직선은 아마도 데이터들에 잘 들어맞을것이다.
+그럼 어떻게 해야 theta zero, theta one을 구할까?
+Idea : choose theta zero, theta one. so that h of theta x is close to y for our training example.
+아이디어 : theta zero, theta one로 이루어진 직선이 training example들과 가까워야한다. (직선과 traning example 거리 들의 합이 최소여야한다)
+
+우리가 갖고있는 training set에 많은 예제들이 있고,( (x,y) 꼴로) 실제로 팔린 값들이 있다.
+x를 바탕으로 실제 y예상값을 구할수 있다. let's formalize this.
+여기서 우리가 할려는건 minimization problem을 해결하는것이다. 즉 theta0,theta1을 최소화할것이다.
+또 h theta of x -y 의 제곱을 최소화할것이다. (즉 데이터들과 직선 거리를 최소화한다는거다)
+자세하게 알아봅시다. i번째 training 예제를 나타내기위해서 x(i),y(i)라고 했었다.
+제가 원하는건 training set을 더하는것인데 i=1부터 m까지 더할것이다.
+즉 트레이닝셋의 숫자만큼 까지 difference의 squre를 더하는것이다.
+계산을 편하게하기위해서 1/2m 을 곱해줄것이다(아마 미적분시에 편하게 할려는 이유일듯. 어차피 최소값을 구하는것이기때문에 1/2m을 곱해줘도 상관이 없다)
+이 식이 linear regression에 대한 objective function(cost function)이다.
+<img src='5.png'>
 <pre>
                   Training Set
                       ↓
@@ -174,62 +197,18 @@ size of hourse  ->   h    ->  Estimated price
     x             (hypothesis)     (estimated value)
 </pre>
 
-#comment: We call this kind of algorithm as 'Linear regression', 'Linear regression with one variable'.
-
-<pre>
-And we will write this as h
-<u>theta(x) equals theta<u>0</u></u> plus theta<u>1 of x.</u>
-Cost function에 대해 알아볼것입니다. 최적화된 직선을 데이터위에 그리는것이 목적입니다
-즉, 어떤 세타0, 세타1을 고르는가를 알아보는 것이다.
-
-thus, select theta0, theta1 close to our training set.
-
-Linear regression에서 이런 형태의 training set이 있다고 치고
-갯수 m = 47, h세타(x) = 세타0 + 세타1x.
-우리는 여기서 세타0, 세타1을 어떤 값으로 선택할것인가에 대해 알아볼것입니다.
-
-세타0, 세타1을 어떻게 선택하냐에 따라 다른 형태의 hypothesis functions를 얻게됩니다.
-예를들어, 세타0 = 1.5, 세타1 = 0 라면 이런형태,
-</pre>
-<pre>
-|
-|---------------
-|
-|----------------
-</pre>
-
-세타0 = 0, 세타1 = 0.5라면
-<pre>
-|   /
-| /
-|/
-|----------------
-</pre>
-
-세타0 = 1, 세타1 = 0.5라면
-<pre>
-|  /
-|/
-|
-|-----
-</pre>
-
-이런 형태의 데이터가 있다면 세타0, 세타1은 이렇게 그려야할것입니다
-그러면 어떻게 이들을 구할것인가?
-training example에서 h세타(x)가 y값에 가까운 값을 세타0,세타1을 고르면된다.
-
-Formalize 해봅시다.
-<b>Linear regresion에서 우리가 해야할것은 세타0, 세타1을 최소화하는것이므로
-  (h세타(x) - y)^2이 최소화되는것이다.</b>
-
-  SUM ((h세타(x) - y)^2)  (1부터 m까지)
-  ;x는 square of house, y는 actual price of house.
-
-  cost function J는  1/2m SUM ((h세타(x) - y)^2)  (1부터 m까지) .
-  이것은 세타0, 세타1을 최소화하는것이므로
-  J(세타0,세타1) 으로 나타낼수있다. = cost function.
-
-  Square cost function이라고 부르기도한다.
+이 cost function을 Square cost function이라고 부르기도한다. 가장 일반적인 linear regression function이다.
+다음 비디오에서는 다른 cost function에 대해 알아볼것이다.
   다음비디오에서 cost function J가 무엇을 하는지 더 자세히 알아봅시다.
+<h3>Cost Function - Intuition 1</h3>
+이전 비디오에서는 수학적인 의미에서의 cost function의 정의에 대해 알아봤다. 이 비디오에서는 cost function이 무엇을 하는지에 대한 intuition을 알아보고 왜 그것을 사용해야하는지에 대해 알아보자asd
+이전시간에 했던것들을 보면, 우리는 직선을 data set에 맞출려고합니다. 이걸 theta 0, theta1을 갖는 hypothesis로 나타냅니다. theta0,theta1이 어떤값인가에 따라
+다른 직선이 생깁니다. 그리고 cost function이 있고 optimization objective도 있습니다.(즉 목적은, 세타0,세타1을 최소화한 cost funtion을 만드는것)
+TODO: 그림추가
+이 비디오에서는 cost function을 나타내기위해 simplified된 hypothesis function을 쓸것입니다.
+h(x) = theata1*x
+(이 simplified된 hypothesis function은 y=ax+b꼴의 직선에서 b, 즉 theta0=0으로 만든것이다.)
+
+<h3>Cost Function - Intuition 2</h3>
 </body>
 </html>
