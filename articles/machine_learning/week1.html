@@ -244,5 +244,25 @@ suqre of the height of line을 구하는것이된다.(y=1x 와의 차이(height)
 (아까 말했다시피 이것이 minimized objective이다..)
 (즉 cost function을 minimized한게 목적이였고, 그것은 theat1이 1인경우이다. 당연하다 gap이 없으니까)
 <h3>Cost Function - Intuition 2</h3>
+이 비디오는 여러분이 contour plots(등고선 방식으로 3d를 나타내는 방법)에 익숙하다고 가정합니다. 이해 못해도 괜찮다.
+
+이전 비디오와는 다르게 theta0, theta1을 유지할것이다(이전비디오에서는 simplied 해서 theat0를 없앴음)
+이전 비디오처럼, hypothesis function H와, cost function J에 대해 알아볼것이다.
+theta0=50, theta1=0.06으로 나타낸다면 이와 같은 hypothesis를 그릴수 있다. (직선을 그림)
+h(x) = 50+0.06x
+이전 비디오에서 theta1만 있을때는 이와같은 그래프를 보였다(그림 그림.. cost funtion1에서 그렸던 2차 함수 그래프와 같은.  x=1일때 y=0인). 이번에는 theta0, theta1 두게의 파라미터가 있기때문에 조금 더 복잡해질것이다.
+(어쨋든 cost function의 x축은 theta1이기때문에 theta1에 대한 함수아닌가?? 하지만 theta0라는 변수가 더해졌기때문에 theat0에 대한 theta1을 그려야할것이다 -> 즉 3차원 그래프를 그려야한다 -> 그래서 contour plots을 쓰는구나)
+theta1만 있을때는 bow shape funtion을 그렸다. 이제 2개의 파라미터를 갖는데, 이 역시도 bow shape funtion을 타나낼것이다. training set에 따라서 아래와 같은 cost funtion을 갖게될것이다. 역시 bow shape function이다.
+(3차 함수를 그리는 그래프, x축은 theat0, z축은 theat1, y축은 J(theat0,theat1))
+TODO: contour plots 그림 붙이기
+
+여기 contour figure에 대한 예제들이 있습니다. 축이 theat0과 theat1만을 나타냅니다. 이 한 타원형은 같은 J(theta0, theta1)의 값을 타나냅니다. (즉 theta0, theta1의 값이 다르더라도 같은 선이라면 같은 J(..,..)함수 값을 갖는다.)
+예제 하나를 봅시다. theta0가 800, theta1이 -0.15인 값을.
+이것을 hypothesis function에 그려보면 기울기가 -0.15이고 y축이 800인 직선이 그려진다. 지금 이 직선은 데이터와 전혀 맞지않는다.
+다른 예제를 봅시다. theta0=360, theta1=0. 이 직선은 h(x)=360+x*0 이된다.
+예제 하나 더.. ( close한 직선을 그림)
+cost function J에 대해 알아봤고, 어떻게 더 나은 hypothesis가 minimum of the cost funtion이 되는지 알아봤다. 자동으로 theta0, theta1을 찾고, minimize cost funtion J하는 것이 목적이다. 즉 어떻게 자동으로 이 값을 읽고 최적화된 값을 찾는 소프트웨어를 작성하냐이다.  (그냥 수학이네)
+이후에 더 많은 파라미터가 있을때는 어떻게 하는지 알아볼것이다. visualize하기 힘든경우에 대해서도 알아볼것임. 다음 비디오에서는 theta0, theta1을 자동으로 찾고 minimize cost funtion J하는 알고리즘에 대해 알아볼것입니다
+
 </body>
 </html>
