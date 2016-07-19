@@ -270,9 +270,29 @@ gradient descent는 다른 general funtion에 적용됩니다. 즉 J(theta0,thet
 우리는 theta0, theta1에 대한  initial guess로 부터 시작을 할것입니다.  theta0, theta1을 0으로 시작한후에 이 값을 바꿔가면서 J(theta0,theta1)을 줄여나갈것입니다.
 아마도 한방에 찾거나 혹은 local minimum을 찾을것입니다.
 그림을 보고 축들은 theta0, theta1으로 되어있고 세로축은 J(theta0,theta1)으로 되어있습니다.
-<2분 26초>
-먼저 theta0, theta1 을 0으로 한다음에 시작할것입니다. surface의 어떤 점에서 시작하게 될것입니다. 저는 0,0 에서 시작했지만 다른 값으로 시작할수도 있음.
-grassy park에서 hole을 생각해봐라.  2개의 언덕이 있고(그림에), 당신이 언덕꼭대기에 있다고 생각해봐라. 우리는 가장 낮은곳(cost funtion J가 가장 작은곳)에 걸어 갈려고 할때 어떤 방법을 써야할까?? 아마 꼭대기에 올라가면 어떤쪽으로 내려가야할지 보이지않을까? 가까운 곳으로 내려가고 다시 주위를 살피고 또 가까운곳으로 내려가면 가장 빠르게 갈것이다.
+먼저 theta0, theta1 을 어떤점으로 정한다음 한다음에 시작할것입니다. surface의 어떤 점에서 시작하게 될것입니다. 저는 0,0 에서 시작했지만 다른 값으로 시작할수도 있음.
+이 그림을 grassy park에서 hole 생각해봐라. 2개의 언덕이 있고(그림에), 당신이 언덕꼭대기에 있다고 생각해봐라. gradient descent에서는 360도 주위를 둘러보고 난후에,
+little baby steps을 특정 방향에서 찾고, 가장 빠르게 내려갈수 있는 곳으로 가고 싶을 것이다.
+What direction do I need baby steps? 우리는 가장 낮은곳(cost funtion J가 가장 작은곳)에 걸어 갈려고 할때 어떤 방법을 써야할까?? 가까운 곳으로 내려가고 다시 주위를 살피고 또 가까운곳으로 내려가면 가장 빠르게 갈것이다. (take another step).  gradient descent는 재미있는 속성이 있는데, 우리가 처음 시작할때 이 점에서 시작을 했었다. 그러면 다른점에서 처음에 시작을 했었다고 상상해보자
+이 점에서 step -> step 을 찾아가는 방식으로 진행한다면 second local optimum on right을 줄것이다. (즉 처음 initial point에 따라 값이 달라진다)
+사실 실제 optimum은 이쪽이지만, slightly different location에서 시작했다고해서 very different local optimum을 찾게되었다.
+이게 gradient descent의 속성이고 나중에 더 이야기하게될것입니다.
+
+수학적으로 봐봅시다. 이게 gradient descent algorithm의 정의입니다.
+<img src='8.png'>
+repeat until convergence 할것이고, 이 식은 theta j를 업데이트할것이다. theta J 에서 alpha 횟수만큼 곱해주는것이다. (현재 위치를 thetaJ의 변화만큼 나눠준다 즉 미분이다)
+:= 는 assignment를 타나낸다. alpha는 learning rate를 나타낸다. alpha 는 creating descent할때 얼마나 많은 횟수의 steps를 하는가를 나타낸다. 즉, alpha가 매우크면 very agressive gradient를 타나낸다(가파른), 적으면 가파르지않은(baby) steps를 나타낸다. 두번째는 도함수(미분계수)이다. 하나 더 중요한게 있는데. 우리는 theta0, theat1을 업데이트하기로햇었다(간단하게하기위해 지금은 2개밖에 없음, 0부터 시작해서 minimum optimum을 찾을때까지 한다고햇었다) 그래서 theta J를 0,1 순서대로 업데이트해줌.
+여러분은 동시에(simultaneously) theta0, theat1을 업데이트할것이다.
+이 식을 구현하기위해서는 right side를 먼저 계산해야한다.
+
+동시에 업데이트하는것이다.
+temp0 = ...식 그리고 temp1 = ...식을 동시에 업데이트하고 나서 theat0,theat1에 assign할것이다.
+잘못 계산한다면
+temp0을 계산하고 theta0에 assign하고 temp1을 계산하고 theta1에 assign하는것이다. 즉, 두번째 temp1을 계산할때 이미 업데이트된 theta0를 쓰고 있다.
+왜 simultaneous update를 사용하는지는 지금 설명하지는 않을것이다. 하지만 모두 다 이렇게 쓴다. incorrect한 방법도 아마도 정답을 줄때도 있겠지만 이것은 gradient descent가 아니다.
+다음 비디오에서 도함수 부분에 대해 알아볼것임
+
+<h3>Gradient Descent Intuation</h3>
 
 </body>
 </html>
