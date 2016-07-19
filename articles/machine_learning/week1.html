@@ -263,6 +263,16 @@ TODO: contour plots 그림 붙이기
 예제 하나 더.. ( close한 직선을 그림)
 cost function J에 대해 알아봤고, 어떻게 더 나은 hypothesis가 minimum of the cost funtion이 되는지 알아봤다. 자동으로 theta0, theta1을 찾고, minimize cost funtion J하는 것이 목적이다. 즉 어떻게 자동으로 이 값을 읽고 최적화된 값을 찾는 소프트웨어를 작성하냐이다.  (그냥 수학이네)
 이후에 더 많은 파라미터가 있을때는 어떻게 하는지 알아볼것이다. visualize하기 힘든경우에 대해서도 알아볼것임. 다음 비디오에서는 theta0, theta1을 자동으로 찾고 minimize cost funtion J하는 알고리즘에 대해 알아볼것입니다
+<h3>Gradient Descent 기울기하강</h3>
+이전 비디오에서는 cost funtion J에 대해 정의하였습니다.  이 비디오에서는 minimizing the cost funtion J를 하는 gradient descent에 대해 알아보도록 하겠습니다.
+gradient descent는 더 일반적인 알고리즘입니다. linear regression에서만 쓰지 않고 모든 머신러닝에서 쓰입니다. 이 시간이후에 우리는 Gradient Descent를 minimizing cost funtion J이외에도 쓰게 될것입니다.  이 비디오에서는 minimizing 랜덤한 funtion J를 하기위해 Gradient descent를 할것이고.  그 이후에 linear regression에 대한 cost funtion J를 minimizing  하기 위해 쓸것입니다. J(theta0, theta1)이있다고 가정하고 이것을 minimizing 하는것이 목적입니다. 아마도 linear regression의 cost funtion일것입니다.
+gradient descent는 다른 general funtion에 적용됩니다. 즉 J(theta0,theta1, theta2, theta3 ...thetaN)이 있고 minimizing theta0, theta1...thetaN을 할때도 쓰입니다. 다만 비디오에서는 간단하게 하기위해 theta0, theta1 두 파라미터만을 이용할것입니다.
+우리는 theta0, theta1에 대한  initial guess로 부터 시작을 할것입니다.  theta0, theta1을 0으로 시작한후에 이 값을 바꿔가면서 J(theta0,theta1)을 줄여나갈것입니다.
+아마도 한방에 찾거나 혹은 local minimum을 찾을것입니다.
+그림을 보고 축들은 theta0, theta1으로 되어있고 세로축은 J(theta0,theta1)으로 되어있습니다.
+<2분 26초>
+먼저 theta0, theta1 을 0으로 한다음에 시작할것입니다. surface의 어떤 점에서 시작하게 될것입니다. 저는 0,0 에서 시작했지만 다른 값으로 시작할수도 있음.
+grassy park에서 hole을 생각해봐라.  2개의 언덕이 있고(그림에), 당신이 언덕꼭대기에 있다고 생각해봐라. 우리는 가장 낮은곳(cost funtion J가 가장 작은곳)에 걸어 갈려고 할때 어떤 방법을 써야할까?? 아마 꼭대기에 올라가면 어떤쪽으로 내려가야할지 보이지않을까? 가까운 곳으로 내려가고 다시 주위를 살피고 또 가까운곳으로 내려가면 가장 빠르게 갈것이다.
 
 </body>
 </html>
