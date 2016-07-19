@@ -204,11 +204,65 @@ size of hourse  ->   h    ->  Estimated price
 이전 비디오에서는 수학적인 의미에서의 cost function의 정의에 대해 알아봤다. 이 비디오에서는 cost function이 무엇을 하는지에 대한 intuition을 알아보고 왜 그것을 사용해야하는지에 대해 알아보자asd
 이전시간에 했던것들을 보면, 우리는 직선을 data set에 맞출려고합니다. 이걸 theta 0, theta1을 갖는 hypothesis로 나타냅니다. theta0,theta1이 어떤값인가에 따라
 다른 직선이 생깁니다. 그리고 cost function이 있고 optimization objective도 있습니다.(즉 목적은, 세타0,세타1을 최소화한 cost funtion을 만드는것)
-TODO: 그림추가
 이 비디오에서는 cost function을 나타내기위해 simplified된 hypothesis function을 쓸것입니다.
 h(x) = theata1*x
 (이 simplified된 hypothesis function은 y=ax+b꼴의 직선에서 b, 즉 theta0=0으로 만든것이다.)
+theta1을 유일한 파라미터로 갖고 있고, optimization objective 는 J함수의 theta1을 최소화 하는것입니다.
+그림에서 의미하는것은 theta 0가 0와 같다면 (0,0)을 지나는 hypothesis function을 선택하게 된다는것이다.
+<img src='6.png'>
+이 simplified된 hypothesizing cost function을 통해 cost function의 컨셉에 대해 더 잘 이해해보자.
+2개의 key function이 존재한다. 첫번째는 hypothesis function 그리고 cost function이다.
+h(x)는 x에 대한 함수이다. x는 size of house 값이였다. (Model representation 참조)
+h(x)는 theta 1이 고정값이다.
+cost function, j의 경우. parameter theta1에 대한 함수이다. theta 1은 hypothesis function에서 기울기를 타나낸다.
 
+여기 training set이 있고, 3점(1,1), (2,2), (3,3)이 있습니다. theta 1을 골라봅시다.
+theta1= 1일경우 my hypothesis는 이 직선과 같이 보일것입니다 (기울기가 1인 y=x꼴의 직선)
+임시로 theta1을 1로 햇는데, theta1 = 1일경우 J(theta1) 함수는 어떻게 될것인가 알아봅시다.
+cost function이 어떤값을 갖는지 봅시다. You'll <a href="http://endic.naver.com/enkrEntry.nhn?sLn=kr&entryId=03ce30c8cf2d4263bd0c9d48e9904442&query=devalue">devalue one</a>. As usual, cost function은 이와같이 나타낼것이고..(1/2m * 1부터 m까지의 각 직선과 training set간의 거리의 squre. 그냥 일반적인 cost function이다)
+이것은 아래 그림과 같이 정리된다 (simplied했으므로 변수를 제거하면.. )
+0의 제곱이 된다.. (아마 합의 공식을 썻을듯)
+<img src='7.png'>
+0이 되는데 왜냐하면 training set (1,1),(2,2),(3,3)에서 theat1이 1이라면 h(x) = y^i가 된다.
+(결국 집 사이즈와 집값이 같다는것인가??)
+공식에 의하면 J(1)=0이 된다. (위에 J(theta1)은 결국 0의 제곱이였으니)
+
+J(theta1)함수에 대해 알아보자
+이 함수는 theta1을 파라미터로 갖는 함수이고, x축은 theta1에 대한 그래프이다. (그림을 봐야겟네)
+그래프에 표시를 하면 (1,0)이 된다. (아마  y=0의 그래프가 될것이다.)
+theta1이 0.5이면 어떻게 될까요?
+theta1이 0.5이면 이와같이되고 (기울기가 0.5인 y=0.5x)
+cost function j를 구해볼까? (그러면 cost function의 usual cost function(1/2m..합 구하는 공식) 먼저 그리고, h(x)를 y=0.5x로 치환해서 정리하면되지않을까?)
+suqre of the height of line을 구하는것이된다.(y=1x 와의 차이(height)의 squre의 합)
+처음은 0.5, 두번째 예제는 (1-2)^2..
+이렇게 정리를 하면 0.68가 된다.
+예제 하나를 더 보자 theat1 =0이라면 ?  (즉 기울기가 0이라는거다, y=x꼴과의 차이를 squre하여 합하면되지않을까?)
+다른값들도 이런식으로 하면된다. theta1이 minus이면 기울기가 minus일것이다.
+다른값들도 하면 이런꼴의 J(theta1) 그래프가 만들어진다
+우리가 하고자하는 optimization objective for a learning algorithm은 theta 1을 선택하는것이다. 그것은 J(theat1)을 최소화하는것이다.
+이것이 objective function for linear regression이다.
+(아까 말했다시피 이것이 minimized objective이다..)
+(즉 cost function을 minimized한게 목적이였고, 그것은 theat1이 1인경우이다. 당연하다 gap이 없으니까)
 <h3>Cost Function - Intuition 2</h3>
+이 비디오는 여러분이 contour plots(등고선 방식으로 3d를 나타내는 방법)에 익숙하다고 가정합니다. 이해 못해도 괜찮다.
+
+이전 비디오와는 다르게 theta0, theta1을 유지할것이다(이전비디오에서는 simplied 해서 theat0를 없앴음)
+이전 비디오처럼, hypothesis function H와, cost function J에 대해 알아볼것이다.
+theta0=50, theta1=0.06으로 나타낸다면 이와 같은 hypothesis를 그릴수 있다. (직선을 그림)
+h(x) = 50+0.06x
+이전 비디오에서 theta1만 있을때는 이와같은 그래프를 보였다(그림 그림.. cost funtion1에서 그렸던 2차 함수 그래프와 같은.  x=1일때 y=0인). 이번에는 theta0, theta1 두게의 파라미터가 있기때문에 조금 더 복잡해질것이다.
+(어쨋든 cost function의 x축은 theta1이기때문에 theta1에 대한 함수아닌가?? 하지만 theta0라는 변수가 더해졌기때문에 theat0에 대한 theta1을 그려야할것이다 -> 즉 3차원 그래프를 그려야한다 -> 그래서 contour plots을 쓰는구나)
+theta1만 있을때는 bow shape funtion을 그렸다. 이제 2개의 파라미터를 갖는데, 이 역시도 bow shape funtion을 타나낼것이다. training set에 따라서 아래와 같은 cost funtion을 갖게될것이다. 역시 bow shape function이다.
+(3차 함수를 그리는 그래프, x축은 theat0, z축은 theat1, y축은 J(theat0,theat1))
+TODO: contour plots 그림 붙이기
+
+여기 contour figure에 대한 예제들이 있습니다. 축이 theat0과 theat1만을 나타냅니다. 이 한 타원형은 같은 J(theta0, theta1)의 값을 타나냅니다. (즉 theta0, theta1의 값이 다르더라도 같은 선이라면 같은 J(..,..)함수 값을 갖는다.)
+예제 하나를 봅시다. theta0가 800, theta1이 -0.15인 값을.
+이것을 hypothesis function에 그려보면 기울기가 -0.15이고 y축이 800인 직선이 그려진다. 지금 이 직선은 데이터와 전혀 맞지않는다.
+다른 예제를 봅시다. theta0=360, theta1=0. 이 직선은 h(x)=360+x*0 이된다.
+예제 하나 더.. ( close한 직선을 그림)
+cost function J에 대해 알아봤고, 어떻게 더 나은 hypothesis가 minimum of the cost funtion이 되는지 알아봤다. 자동으로 theta0, theta1을 찾고, minimize cost funtion J하는 것이 목적이다. 즉 어떻게 자동으로 이 값을 읽고 최적화된 값을 찾는 소프트웨어를 작성하냐이다.  (그냥 수학이네)
+이후에 더 많은 파라미터가 있을때는 어떻게 하는지 알아볼것이다. visualize하기 힘든경우에 대해서도 알아볼것임. 다음 비디오에서는 theta0, theta1을 자동으로 찾고 minimize cost funtion J하는 알고리즘에 대해 알아볼것입니다
+
 </body>
 </html>
