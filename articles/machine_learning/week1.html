@@ -318,9 +318,21 @@ Gradient Descent를 minimize cost funtion에 쓴다
 <img src='9.png'>
 여기서 중요한것은 gradient descent의 도함수 부분이다.
 J(theta0, theta1)을 linear regression의 cost funtion으로 치환을 해주고, theta0와 theta1을 동시에 업데이트해준다. (Gradient Descent항목 참조하면 동시에 업데이트하라고되어있음)
+theta0에서 j=0인경우를 간단히 정리하면.. 이렇게되고 theta1에서 j=1인경우를 간단히 정리하면 이렇게된다..
+(근데 왜 1/2가 사라지는거지?)
 <img src='10.png'>
 위 그림처럼되는데..
 TODO: 이해안됨. 공부.
+이 도함수 부분을 계산하기위해서는 미적분이 필요한데, 몰라도 된다 숙제할떄는 상관없다. derivative(도함수)부분은 cost funtion의 기울기 부분이다. 간단하게 정리한걸가지고 gradient descent 알고리즘으로 가보자.
+gradient descent알고리즘은 convergence까지 theata0, theta1을 업데이트하는 식으로 minus alpha를 도함수로 곱해준다. 바로 이것이 linear regression algorithm이다.
+이전에 말했다시피 theta0, theta1은 simultaneously하게 업데이트해줘야한다.
+Gradient descent에서 우리가 봤던 이슈중 하나는 local optima에 민감하다는건데 (iniitial point가 조금만 달라도 local optima에 빠질수가 있다)
+cost funtion for linear regression은 항상 활모양의 함수이므로, 이것을 convex(볼록한) funtion 이라고함 그리고 local optima가 없다. 하나의 optima만 존재함, 즉 global optima만 구하게된다.
+실제 알고리즘에서 봅시다.
+J(theta0,theta1)에서 initialize point를 900, -1로 하겠다. h(x) = -900-0.1x 가 될것이다.
+더 해보자, 더할수록 hypothesis funtion의 직선이 바뀌는것ㅇ르 볼수잇을것이다. steps를 더 진행해보자 cost 가 줄어드는 방식으로.  더 나아지는 것을 볼수잇다.
+cost funtion이 global minimum에 왔을떄, good fit의 hypothesis funtion을 주는것을 알수잇다.
+우리가 햇던 알고리즘을 'Batch' gradient descent라고도 한다.; 모든 training example을 이용한 경우를 말한다.
 
 </body>
 </html>
