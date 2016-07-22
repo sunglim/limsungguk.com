@@ -263,6 +263,76 @@ TODO: contour plots 그림 붙이기
 예제 하나 더.. ( close한 직선을 그림)
 cost function J에 대해 알아봤고, 어떻게 더 나은 hypothesis가 minimum of the cost funtion이 되는지 알아봤다. 자동으로 theta0, theta1을 찾고, minimize cost funtion J하는 것이 목적이다. 즉 어떻게 자동으로 이 값을 읽고 최적화된 값을 찾는 소프트웨어를 작성하냐이다.  (그냥 수학이네)
 이후에 더 많은 파라미터가 있을때는 어떻게 하는지 알아볼것이다. visualize하기 힘든경우에 대해서도 알아볼것임. 다음 비디오에서는 theta0, theta1을 자동으로 찾고 minimize cost funtion J하는 알고리즘에 대해 알아볼것입니다
+<h3>Gradient Descent 기울기하강</h3>
+이전 비디오에서는 cost funtion J에 대해 정의하였습니다.  이 비디오에서는 minimizing the cost funtion J를 하는 gradient descent에 대해 알아보도록 하겠습니다.
+gradient descent는 더 일반적인 알고리즘입니다. linear regression에서만 쓰지 않고 모든 머신러닝에서 쓰입니다. 이 시간이후에 우리는 Gradient Descent를 minimizing cost funtion J이외에도 쓰게 될것입니다.  이 비디오에서는 minimizing 랜덤한 funtion J를 하기위해 Gradient descent를 할것이고.  그 이후에 linear regression에 대한 cost funtion J를 minimizing  하기 위해 쓸것입니다. J(theta0, theta1)이있다고 가정하고 이것을 minimizing 하는것이 목적입니다. 아마도 linear regression의 cost funtion일것입니다.
+gradient descent는 다른 general funtion에 적용됩니다. 즉 J(theta0,theta1, theta2, theta3 ...thetaN)이 있고 minimizing theta0, theta1...thetaN을 할때도 쓰입니다. 다만 비디오에서는 간단하게 하기위해 theta0, theta1 두 파라미터만을 이용할것입니다.
+우리는 theta0, theta1에 대한  initial guess로 부터 시작을 할것입니다.  theta0, theta1을 0으로 시작한후에 이 값을 바꿔가면서 J(theta0,theta1)을 줄여나갈것입니다.
+아마도 한방에 찾거나 혹은 local minimum을 찾을것입니다.
+그림을 보고 축들은 theta0, theta1으로 되어있고 세로축은 J(theta0,theta1)으로 되어있습니다.
+먼저 theta0, theta1 을 어떤점으로 정한다음 한다음에 시작할것입니다. surface의 어떤 점에서 시작하게 될것입니다. 저는 0,0 에서 시작했지만 다른 값으로 시작할수도 있음.
+이 그림을 grassy park에서 hole 생각해봐라. 2개의 언덕이 있고(그림에), 당신이 언덕꼭대기에 있다고 생각해봐라. gradient descent에서는 360도 주위를 둘러보고 난후에,
+little baby steps을 특정 방향에서 찾고, 가장 빠르게 내려갈수 있는 곳으로 가고 싶을 것이다.
+What direction do I need baby steps? 우리는 가장 낮은곳(cost funtion J가 가장 작은곳)에 걸어 갈려고 할때 어떤 방법을 써야할까?? 가까운 곳으로 내려가고 다시 주위를 살피고 또 가까운곳으로 내려가면 가장 빠르게 갈것이다. (take another step).  gradient descent는 재미있는 속성이 있는데, 우리가 처음 시작할때 이 점에서 시작을 했었다. 그러면 다른점에서 처음에 시작을 했었다고 상상해보자
+이 점에서 step -> step 을 찾아가는 방식으로 진행한다면 second local optimum on right을 줄것이다. (즉 처음 initial point에 따라 값이 달라진다)
+사실 실제 optimum은 이쪽이지만, slightly different location에서 시작했다고해서 very different local optimum을 찾게되었다.
+이게 gradient descent의 속성이고 나중에 더 이야기하게될것입니다.
+
+수학적으로 봐봅시다. 이게 gradient descent algorithm의 정의입니다.
+<img src='8.png'>
+repeat until convergence 할것이고, 이 식은 theta j를 업데이트할것이다. theta J 에서 alpha 횟수만큼 곱해주는것이다. (현재 위치를 thetaJ의 변화만큼 나눠준다 즉 미분이다)
+:= 는 assignment를 타나낸다. alpha는 learning rate를 나타낸다. alpha 는 creating descent할때 얼마나 많은 횟수의 steps를 하는가를 나타낸다. 즉, alpha가 매우크면 very agressive gradient를 타나낸다(가파른), 적으면 가파르지않은(baby) steps를 나타낸다. 두번째는 도함수(미분계수)이다. 하나 더 중요한게 있는데. 우리는 theta0, theat1을 업데이트하기로햇었다(간단하게하기위해 지금은 2개밖에 없음, 0부터 시작해서 minimum optimum을 찾을때까지 한다고햇었다) 그래서 theta J를 0,1 순서대로 업데이트해줌.
+여러분은 동시에(simultaneously) theta0, theat1을 업데이트할것이다.
+이 식을 구현하기위해서는 right side를 먼저 계산해야한다.
+
+동시에 업데이트하는것이다.
+temp0 = ...식 그리고 temp1 = ...식을 동시에 업데이트하고 나서 theat0,theat1에 assign할것이다.
+잘못 계산한다면
+temp0을 계산하고 theta0에 assign하고 temp1을 계산하고 theta1에 assign하는것이다. 즉, 두번째 temp1을 계산할때 이미 업데이트된 theta0를 쓰고 있다.
+왜 simultaneous update를 사용하는지는 지금 설명하지는 않을것이다. 하지만 모두 다 이렇게 쓴다. incorrect한 방법도 아마도 정답을 줄때도 있겠지만 이것은 gradient descent가 아니다.
+다음 비디오에서 도함수 부분에 대해 알아볼것임
+
+<h3>Gradient Descent Intuation</h3>
+이전 비디오에서는 수학적인 정의로 Gradient Descent에 대해 알아봤었음. gradient descent algorithm의 단계들이 어째서 올바른 것인가에 대해 더 알아보자.
+definition을 보면 learning rate라고 하는 alpha가 있는데 how big step을 나타낸다. 두번쨰는 도함수 부분인데, 이 비디오에서는 이 두 term이 뭘하는지에 대해 알아볼것임
+이 예제에서는 좀 더 쉽게 하기위해서, 함수의 파라미터를 1개로 만들어 볼것입니다. (기존에 J함수는 theta0, theata1 2개의 파라미터였는데 theata1만 쓴다는말임)
+theta1은 실수 입니다. 하나의 d만 갖게 됩니다.(dx/dy꼴의 d를 말하는거임)
+Gradient descent이 이 함수에서 뭘하는지 보도록합시다.
+J(theta1)함수가 있고, theta1은 실수이다. 그리고 initial point를 특정점에서 시작한다고 하자. gradient descent가 하는것은 theata1을 공식대로 업데이트하는것이다.
+TODO:그림
+도함수 부분을 theata에서 d로 바꿧는데.  수학적으로 걱정할것은 없다.
+initial point의 기울기를 갖는 선을 그려보자. 기울기가 바로 도함수이다. 즉 기울기는 height / horizontal(x의 변화값) 이다. 이 기울기는 양수값을 갖고있다. 그리고 alpha부분은 항상 양수이다.
+다른 예를 보자. 이번에는 initial point가 left side에 있다고 가정하자. 기울기는 음수가 될것이다.
+alpha가 매우 작으면 어떻게 될것인가? alpha가 작다는것은 theata1이 조금씩 업데이트된다는것이다(변화가 작다는것) 그리고 minimum을 찾기위한 steps이 많아질수밖에 없다.
+또한 alpha가 작으면 gradient descent가 느려진다.(조금씩이동하니까?) tiny tiny baby step을 a lot of steps로 해야하기때문에.
+alpha가 매우 큰 경우를 살펴보자. gradient descent가 overshoot할수도 있다(많이 움직이므로 minimum을 지나칠수도있다)
+initial point가 이미 minimum일 경우에는 the first one step이 어떻게 될까?
+initial point가 local minimum일때는 도함수 부분이 0이되고, 기울기가 0인 직선이 외접한다. 즉 이말은 이미 local minimum일때는 theata1이 바뀌지않는다는것이다.
+이는 또한 gradient descent가 alpha값이 고정되있더라도 local minimum을 찾아가는것을 설명해줄수 잇는데,  local minimum에 접근해갈수록 gradient descent는 자동으로 더 작은 step을 선택한다.
+  그래서 따로 alpha를 줄일 필요가 없다.
+처음 점이 여기라고 가정하면 기울기가 크기때문에 도함수 부분이 클것이고, theta1의 update되는 값도 클것이다. 하지만 local minimum에 접근해갈수록 기울기가 작아지고 도함수 부분도 작아지므로 smaller step으로 업데이트된다. 점점 smaller smaller step으로 자동으로 가게된다. 그래서 alpha값을 바꿀필요가 없다.
+
+<h3>Gradient Descent For Linear Regression</h3>
+이 비디오에서는 Gradient Descent를 우리의 linear regression의 cost funtion에 적용할것이다.
+Gradient Descent를 minimize cost funtion에 쓴다
+<img src='9.png'>
+여기서 중요한것은 gradient descent의 도함수 부분이다.
+J(theta0, theta1)을 linear regression의 cost funtion으로 치환을 해주고, theta0와 theta1을 동시에 업데이트해준다. (Gradient Descent항목 참조하면 동시에 업데이트하라고되어있음)
+theta0에서 j=0인경우를 간단히 정리하면.. 이렇게되고 theta1에서 j=1인경우를 간단히 정리하면 이렇게된다..
+(근데 왜 1/2가 사라지는거지?)
+<img src='10.png'>
+위 그림처럼되는데..
+TODO: 이해안됨. 공부.
+이 도함수 부분을 계산하기위해서는 미적분이 필요한데, 몰라도 된다 숙제할떄는 상관없다. derivative(도함수)부분은 cost funtion의 기울기 부분이다. 간단하게 정리한걸가지고 gradient descent 알고리즘으로 가보자.
+gradient descent알고리즘은 convergence까지 theata0, theta1을 업데이트하는 식으로 minus alpha를 도함수로 곱해준다. 바로 이것이 linear regression algorithm이다.
+이전에 말했다시피 theta0, theta1은 simultaneously하게 업데이트해줘야한다.
+Gradient descent에서 우리가 봤던 이슈중 하나는 local optima에 민감하다는건데 (iniitial point가 조금만 달라도 local optima에 빠질수가 있다)
+cost funtion for linear regression은 항상 활모양의 함수이므로, 이것을 convex(볼록한) funtion 이라고함 그리고 local optima가 없다. 하나의 optima만 존재함, 즉 global optima만 구하게된다.
+실제 알고리즘에서 봅시다.
+J(theta0,theta1)에서 initialize point를 900, -1로 하겠다. h(x) = -900-0.1x 가 될것이다.
+더 해보자, 더할수록 hypothesis funtion의 직선이 바뀌는것ㅇ르 볼수잇을것이다. steps를 더 진행해보자 cost 가 줄어드는 방식으로.  더 나아지는 것을 볼수잇다.
+cost funtion이 global minimum에 왔을떄, good fit의 hypothesis funtion을 주는것을 알수잇다.
+우리가 햇던 알고리즘을 'Batch' gradient descent라고도 한다.; 모든 training example을 이용한 경우를 말한다.
 
 <h3>Linear algebra review</h3>
 Matrix multiplication은 굉장히 유용하게 쓰이는데, 여러번의 계산을 단 한번의 matrix multiplication으로 할수 있기때문이다 (fibonacci도 이런식으로 풀면 굉장이 빠름)
