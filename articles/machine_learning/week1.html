@@ -295,6 +295,32 @@ temp0을 계산하고 theta0에 assign하고 temp1을 계산하고 theta1에 ass
 <h3>Gradient Descent Intuation</h3>
 이전 비디오에서는 수학적인 정의로 Gradient Descent에 대해 알아봤었음. gradient descent algorithm의 단계들이 어째서 올바른 것인가에 대해 더 알아보자.
 definition을 보면 learning rate라고 하는 alpha가 있는데 how big step을 나타낸다. 두번쨰는 도함수 부분인데, 이 비디오에서는 이 두 term이 뭘하는지에 대해 알아볼것임
+이 예제에서는 좀 더 쉽게 하기위해서, 함수의 파라미터를 1개로 만들어 볼것입니다. (기존에 J함수는 theta0, theata1 2개의 파라미터였는데 theata1만 쓴다는말임)
+theta1은 실수 입니다. 하나의 d만 갖게 됩니다.(dx/dy꼴의 d를 말하는거임)
+Gradient descent이 이 함수에서 뭘하는지 보도록합시다.
+J(theta1)함수가 있고, theta1은 실수이다. 그리고 initial point를 특정점에서 시작한다고 하자. gradient descent가 하는것은 theata1을 공식대로 업데이트하는것이다.
+TODO:그림
+도함수 부분을 theata에서 d로 바꿧는데.  수학적으로 걱정할것은 없다.
+initial point의 기울기를 갖는 선을 그려보자. 기울기가 바로 도함수이다. 즉 기울기는 height / horizontal(x의 변화값) 이다. 이 기울기는 양수값을 갖고있다. 그리고 alpha부분은 항상 양수이다.
+다른 예를 보자. 이번에는 initial point가 left side에 있다고 가정하자. 기울기는 음수가 될것이다.
+alpha가 매우 작으면 어떻게 될것인가? alpha가 작다는것은 theata1이 조금씩 업데이트된다는것이다(변화가 작다는것) 그리고 minimum을 찾기위한 steps이 많아질수밖에 없다.
+또한 alpha가 작으면 gradient descent가 느려진다.(조금씩이동하니까?) tiny tiny baby step을 a lot of steps로 해야하기때문에.
+alpha가 매우 큰 경우를 살펴보자. gradient descent가 overshoot할수도 있다(많이 움직이므로 minimum을 지나칠수도있다)
+initial point가 이미 minimum일 경우에는 the first one step이 어떻게 될까?
+initial point가 local minimum일때는 도함수 부분이 0이되고, 기울기가 0인 직선이 외접한다. 즉 이말은 이미 local minimum일때는 theata1이 바뀌지않는다는것이다.
+이는 또한 gradient descent가 alpha값이 고정되있더라도 local minimum을 찾아가는것을 설명해줄수 잇는데,  local minimum에 접근해갈수록 gradient descent는 자동으로 더 작은 step을 선택한다.
+  그래서 따로 alpha를 줄일 필요가 없다.
+처음 점이 여기라고 가정하면 기울기가 크기때문에 도함수 부분이 클것이고, theta1의 update되는 값도 클것이다. 하지만 local minimum에 접근해갈수록 기울기가 작아지고 도함수 부분도 작아지므로 smaller step으로 업데이트된다. 점점 smaller smaller step으로 자동으로 가게된다. 그래서 alpha값을 바꿀필요가 없다.
+
+<h3>Gradient Descent For Linear Regression</h3>
+이 비디오에서는 Gradient Descent를 우리의 linear regression의 cost funtion에 적용할것이다.
+Gradient Descent를 minimize cost funtion에 쓴다
+<img src='9.png'>
+여기서 중요한것은 gradient descent의 도함수 부분이다.
+J(theta0, theta1)을 linear regression의 cost funtion으로 치환을 해주고, theta0와 theta1을 동시에 업데이트해준다. (Gradient Descent항목 참조하면 동시에 업데이트하라고되어있음)
+<img src='10.png'>
+위 그림처럼되는데..
+TODO: 이해안됨. 공부.
 
 </body>
 </html>
