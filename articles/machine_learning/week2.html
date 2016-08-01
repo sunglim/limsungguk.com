@@ -85,6 +85,25 @@ machinary of linear regression to fit very complicated, even very non-linear reg
 그리고  h(x) = theta0 + theta1*X.
 아마도 더 나은 결과를 줄것이다.
 feature를 선택하는 것에 대한 아이디어는 polynomial regression이라고 부른다.
+size에 대한 price가 이렇다고 합니다
+당신이 할수 있는것중 하나는 quadratic model(2차 방정식)을 맞춰보는것입니다
+즉 theta0 + theta1*x + theta2*x^2.
+직선은 맞지않아보입니다. 따라서 quadratic model을 맞춰볼것입니다.
+이런 모양(휘어진)으로 될것입니다.
+하지만 quadratic function은 결국엔 기울기가 마이너스가 되므로 우리는 다른 형태의 polynomial model을 선택해야합니다.
+Cubic Function; theta0 + theta1*x + theta2*x^2 + theta3*x^3. 기울기가 줄지않음.
+간단한 알고리즘 변경을 통해 이 공식을 적용할수 있습니다.
+hypothesis의 형태는
+
+size : 1-1000
+size^2 : 1-1000000
+size^3 : 1-10^9 
+가 될것이다. 따라서 Feature Scailing(week2에서 배운)이 매우 중요하다.
+또는 squre root를 선택하는것도 방법이다.
+(여기서 Feature Scailing을 적용하여 hypothesis를 구하는것이 핵심)
+
+Computing Parameters Analytically
+
 <h2>Octave/Matlab tutorial</h3>
 <h3>Vectorization</h3>
 </body>
