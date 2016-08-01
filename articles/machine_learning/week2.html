@@ -73,6 +73,18 @@ J(theta)는 every iteration일때마다 줄어들어야한다.
 gradient descent할때 J(theta)가 증가할때가 있는데 이것은 제대로 동작하지 않는것이다.
 이때는 더 작은 alpha를 이용해야한다.
 일반적으로 J(theta)가 증가하는 이유는,
+<h3>Features and Polynomial Regression</h3>
+어떤 적절한 Feature를 선택해야하는지에 대해 알아볼것이다. 또한 polynomial regression에 대해 알아볼것인데,
+machinary of linear regression to fit very complicated, even very non-linear regression에 사용하도록 할것이다.
+(machinary : 기계장치)
+집값을 예상하는 예제를 살펴보자. 2개의 Feature가 있다고 가정하면, frontage, depth 이다.
+공식은 h(x) = theta0 + theta1*frontage + theta2*depth.
+주어진 Feature를 이용하는것 뿐만아니라 새로운 Feature를 만들어 낼수도 있다.
+
+즉, Area를 나타내는 X = frontage * depth
+그리고  h(x) = theta0 + theta1*X.
+아마도 더 나은 결과를 줄것이다.
+feature를 선택하는 것에 대한 아이디어는 polynomial regression이라고 부른다.
 <h2>Octave/Matlab tutorial</h3>
 <h3>Vectorization</h3>
 </body>
