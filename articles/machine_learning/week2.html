@@ -97,14 +97,29 @@ hypothesis의 형태는
 
 size : 1-1000
 size^2 : 1-1000000
-size^3 : 1-10^9 
+size^3 : 1-10^9
 가 될것이다. 따라서 Feature Scailing(week2에서 배운)이 매우 중요하다.
 또는 squre root를 선택하는것도 방법이다.
 (여기서 Feature Scailing을 적용하여 hypothesis를 구하는것이 핵심)
 
 Computing Parameters Analytically
 
-<h2>Octave/Matlab tutorial</h3>
+<h2>Quiz: Linear Regression with Multiple Variables</h2>
+m*(n+1) 이 X가 된다.
+y는 그대로 m dimention . m*1
+
+<h2>Octave/Matlab tutorial</h2>
 <h3>Vectorization</h3>
+- unvectorized implementation
+prediction = 0.0
+for j=1:n+1
+  prediction = prediction + theta(j) * x(j)
+end
+
+- vectorized implementation
+prediction = theta' * x;
+
+.* 는 element wise operation이다. 즉 matrix끼리 곱하는게 아닌
+하나의 엘리먼트, 각각에 곱할수가 있다.
 </body>
 </html>
