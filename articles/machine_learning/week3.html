@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<h3>Logistic Regression</h3>
+<p>
+</p>
+<h2>Classification</h2>
+Classification problem에 대해 알아볼것입니다. logistic regression이라는 알고리즘을 개발할것인데, 요즘날에 가장 널리 쓰이는 알고리즘 입니다.
+이메일이 스팸인지 아닌지, 혹은 암이 악성인지 양성인지를 구분하는것입니다.
+y <- {0,1}로 나타낼수 있는데 0: 'Negative class', 1: 'Positive class'로 나타낼수있다.
+구분하는것일 뿐이고 0,1. negative positive가 갖는 의미는 없다.
+구분을 여러게로 하는경우 multi classficiation problem이라고 하고 두게이면 binary classification problem이다.
+
+예제 그림,
+hypothesis함수가 0.5를 기준으로 0,1을 구분하게된다.
+
+하지만 극단적으로 Tumor size가 매우 큰값이 추가된다면 hypothesis의 직선의 기울기가 바뀌게 되고 이것은 좋지않다.
+따라서 linear regression의 hypothesis함수를 classification problem에 사용하는것은 일반적으로 좋지않다.
+classification problem에서 결과는 0,1이 나오지만 linear regression에서는 h(x) > 1, h(x) < 0인경우가 발생하기에 적절하지못하다.
+따라서 logistic regression; 0<= h(x) <= 1을 이용할것이다.
+
+<h2>Hypothesis representation</h2>
+이전에 0<= h(x) <= 1를 만족하고 싶어하였다.
+linear regression에서는 h(x) = theta. transpose x 였다. logistic regression을 위해서 저는 조금 수정을 할것입니다.
+TODO: 그림
+h(x) = g(theta.transpose X)
+그리고 g(z)를 다음과 같이 정의할것입니다. 이 함수를 Sigmoid function 혹은 logistic function이라고 부릅니다.
+h(x)에 g(z)를 대입하여 하나의 h(x)로 나타낼수 있습니다.
+이 hypothesis output에 대한 설명; input x에 대한 확률을 계산하는것.
+종양 사이즈 예제를 보면, x = [x0;x1] = [1; tumorSize]  (여기서 x0는 항상 1인것을 이용)
+h(x) = 0.7이라고 가정을 하면,  70%의 환자가 malignant이다.
+수학적으로 표현을 하면
+h(x) = p(y=1|x;theta) (설명을 하면 probability 가 1일때 x가 주어졌을때 theta가 파라미터가 된다. 뭔소리냐?)
+지금 하고있는 작업이 classification task이므로 y는 0혹은 1일것이다.  이 두 숫자가 y가 취할수 있는 숫자이다. 즉 training set이나 새로 온 환자가 취할수잇는 값인것이다.
+<h2>Decision Boundary</h2>
+logistic regression에서 hypothesis function에 대한 더 나은 통찰력을 제공해줄것이다.
+</body>
+</html>
