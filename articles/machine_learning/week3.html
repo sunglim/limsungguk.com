@@ -36,5 +36,15 @@ h(x) = p(y=1|x;theta) (설명을 하면 probability 가 1일때 x가 주어졌�
 지금 하고있는 작업이 classification task이므로 y는 0혹은 1일것이다.  이 두 숫자가 y가 취할수 있는 숫자이다. 즉 training set이나 새로 온 환자가 취할수잇는 값인것이다.
 <h2>Decision Boundary</h2>
 logistic regression에서 hypothesis function에 대한 더 나은 통찰력을 제공해줄것이다.
+
+<h2>Cost Funtion</h2>
+파라미터 theta를 어떻게 fit할것인가에 대해 알아볼것이다.
+optimization objective에 대해 정의할것이다. 또는 cost funtion, fit the parameter에 대해 알아볼것임.
+supervised learning에 쓰이는 h(x) 함수에서의 theta를 어떻게 선택할것인가에 대해 알아볼것이다.
+Linear regression model에서는 아래와 같은 모델을 사용했었다. 여기 1/2m에서 1/m을 앞으로 빼고
+이후 sigma이후를 cost(h(x^i), y)함수로 치환을 하도록하자.
+이 cost함수가 내 learning algorithm이 지불해야할 cost이다. 간단하게 보기위해서 superscript(지수)를 없앤다.
+이것이 linear regression에 대한 cost funtion인고 우리는 logistic regression에 대해 알아볼것이다.
+문제는 non-convex funtion이 된다는것이다. 우리가 원하는건 convex한 J(theta)를 얻는것이다.
 </body>
 </html>
